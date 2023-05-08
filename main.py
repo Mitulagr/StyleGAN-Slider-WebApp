@@ -11,10 +11,11 @@ GAN = getGAN()
 
 # @st.cache_data(allow_output_mutation=True)
 def generate_image(style):
-    img = GAN([style])
-    img = img[0].to('cpu').squeeze().permute(1,2,0) * 0.5 + 0.5
-    img = img.clip(0,1)
-    return (img.detach().numpy() * 255).astype(np.uint8)
+    #img = GAN([style])
+    #img = img[0].to('cpu').squeeze().permute(1,2,0) * 0.5 + 0.5
+    #img = img.clip(0,1)
+    return (torch.rand(1024,1024,3).numpy() * 255).astype(np.uint8) 
+    #return (img.detach().numpy() * 255).astype(np.uint8)
 
 # Create 32 sliders to control the latent vector
 
