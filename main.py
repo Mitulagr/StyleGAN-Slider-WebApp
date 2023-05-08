@@ -11,7 +11,7 @@ GAN = getGAN()
 
 # @st.cache_data(allow_output_mutation=True)
 def generate_image(style):
-    img = GAN([style.to('cuda')])
+    img = GAN([style])
     img = img[0].to('cpu').squeeze().permute(1,2,0) * 0.5 + 0.5
     img = img.clip(0,1)
     return (img.detach().numpy() * 255).astype(np.uint8)
